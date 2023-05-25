@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Nothing to build in this project, skipping..."
+  post_build:
+    commands:
+      - aws s3 sync . s3://website-cicd-pipeline --delete
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
